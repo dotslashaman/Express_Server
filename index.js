@@ -15,7 +15,7 @@ app.post('/ans2', (req, res) => {
 app.post('/', (req, res) => {
     console.log(req.headers);
     res.send("test: you hit main server");
-    res.send("test");
+    res.send("test.");
 })
 
 
