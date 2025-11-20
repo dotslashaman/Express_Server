@@ -1,25 +1,169 @@
-const express = require('express')
-const app = express()
-const port = 3006
+const express = require("express");
+const app = express();
+//const fs = require("fs");
 
-app.post('/ans1', (req, res) => {
 
-    res.send("you hit server1");
+/*const filepath = 'hello.txt';
+
+fs.readFile(filepath,'utf-8',(err,data)=>{
+    if(err){
+        console.log("Error reading file.");
+        return;
+    }
+    console.log(data+"\nHello");
+})/*
+
+
+
+
+
+/* const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+app.listen(3000);
+
+app.use(bodyParser.json());
+
+app.post('/apiTest',(req,res) => {
+    console.log(req.body);
+    res.status(401).send("Server Is Online"); 
 })
 
-app.post('/ans2', (req, res) => {
-    res.send("you hit sever2");
+app.get('/getReq2',(req,res) =>{
+    res.status(201).send("Api Req - Get Server 1");
+})
+
+app.post('/postReq',(req,res) =>{
+    console.log(req.body);
+    res.status(202).send("Api Req - Post Server 1");
+})
+
+app.get('/getReq',(req,res) =>{
+    console.log(req.body);
+    res.status(200).send("Get request check");
+})
+
+
+let a = 10;
+console.log(typeof a);
+
+if (typeof a == 'number'){
+    console.log("accepted");
+}
+
+const num = [1,2,3,4,5];
+const copy = num.map(num => num*2);
+
+console.log(copy);
+
+(function(){
+    console.log("hehehe");
+})(); 
+
+
+
+
+
+
+let noOfKidney = null;
+
+app.get('/NumberOfKidneys',(req,res)=>{
+    res.send("The number of kidney is :" + noOfKidney);
+})
+
+app.get('/addKidney',(req,res)=>{
+    res.send("Added successfully");
+    noOfKidney = noOfKidney + 1;
+})
+
+app.put('/reset',(req,res)=>{
+    
+    if(noOfKidney >=1){
+    noOfKidney = 0;
+    res.send("reset done");
+    }else{
+        res.send("Kidney already zero");
+    }
+})
+
+*/
+
+/*
+input = [1,2,3,4,5];
+const fun = (i) =>{
+return i*2;
+}
+const ans = input.map((i) =>{
+    return i*3;
+});
+
+console.log(ans);
+
+//write a map function manually
+
+
+
+const mdware = (req,res,next) => {
+    let a = req.headers.name;
+    if(a != "Aman"){
+        res.status(400).json({
+            msg : "User not found"
+        });
+    }else{
+        next();
+    }
+}
+
+const carchk = (req,res,next) => {
+    let a = req.headers.car;
+    if(a != "Range Rover"){
+        res.status(400).json({
+            msg : "Car not found"
+        });
+    }else{
+        next();
+    }
+}
+
+app.post('/',mdware,carchk,(req,res)=>{
+    let name = req.headers.name;
+    let car = req.headers.car;
+    res.status(201).json({
+        msg : "Welcome! Hello from server 1 " + name + "Your car is: "+ car
+    })
+})
+
+app.listen(3001);
+*/
+
+let req = 0;
+function countreq(req,res,next){
+    req++;
+    res.send(req);
+    next();
+}
+
+app.get('/',(req,countreq,res) =>{
+    const userName = req.headers.user;
+    const password = req.headers.pass;
+    const carId = req.query.carId;
+
+    if(userName != 'TestUser' && password != 'pass'){
+        res.status(400).json({"msg" : "Something is wrong with your creds"});
+
+    }
+
+    if(carId != 0){
+        res.send("Wrong car ID");
+    }
+
+    res.send("Welcome : )");
+
+
+})
+
+app.get('/req',(req,res,countreq)=>{
     
 })
 
-app.post('/', (req, res) => {
-    console.log(req.headers);
-    res.send("test: you hit main server");
-    res.send("test.");
-})
-
-
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.listen(3000);

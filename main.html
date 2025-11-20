@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Http Server Test</title>
+</head>
+<body>
+    <button onclick="getData()"> Load Data </button>
+
+    <script>
+        function getData(){
+            const response = fetch("https://fakerapi.it/api/v2/persons").then(
+                function(response){
+                    response.json().then(
+                        function(finalData){
+                            console.log(finalData);
+                        }
+                    )
+                }
+            )
+                
+            
+            console.log(response);
+        }
+    </script>
+</body>
+
+
+</html>
