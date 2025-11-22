@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Http Server Test</title>
+    <title>Http Server</title>
     <style>
         button{
             color : white;
@@ -10,22 +10,17 @@
 </head>
 <body>
     <button onclick="getData()"> Load Data </button>
+    <p id="para1"></p>
 
     <script>
-        function getData(){
-            const response = fetch("https://fakerapi.it/api/v2/persons").then(
-                function(response){
-                    response.json().then(
-                        function(finalData){
-                            console.log(finalData);
-                        }
-                    )
-                }
-            )
-                
+        
+        async function getData(){
+            const response = await fetch("https://fakerapi.it/api/v2/persons");
+            const FinalData = await response.json();
             
-            console.log(response);
         }
+
+        
     </script>
 </body>
 
