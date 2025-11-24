@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Calculator</title>
+    </head>
+    <body>
+        <input id="it1" placeholder="Enter num 1">
+        <input id="it2" placeholder="Enter num2">
+
+        <button id="bt1">Find Sum</button>
+        <p id="p1"></p>
+
+        <script>
+            
+            document.getElementById("bt1").onclick = function(){
+            let num1 = parseInt(document.getElementById("it1").value);
+            let num2 = parseInt(document.getElementById("it2").value);
+            let num3 = num1+num2;
+
+            document.getElementById("p1").innerHTML = num3;
+            }
+
+            
+        </script>
+    </body>
+</html>
