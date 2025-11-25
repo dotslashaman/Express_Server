@@ -24,6 +24,7 @@
         <input id="principle" class="ip" placeholder="Enter the Principle">
         <input id="rate" class="ip" placeholder="Enter the Rate">
         <input id="time" class="ip" placeholder="Enter the duration">
+        <p id="p2"></p>
         <button id="calc"> Calculate Interest </button>
 
         <script>
@@ -47,12 +48,17 @@
 
             document.getElementById("calc").onclick = function(){
 
-                const principle = document.getElementById("principle").value;
-                const rate = document.getElementById("rate").value;
-                const time = document.getElementById("time").value;
+                const p1 = document.getElementById("principle").value;
+                const r1 = document.getElementById("rate").value;
+                const t1 = document.getElementById("time").value;
 
-                fetch("http://localhost:3000/interest?principle="+ principle + "&rate=" + rate + "&time=" +time)
-                .then(console.log(response));
+               fetch("http://localhost:3000/interest?p1="+ p1 + "&r1=" + r1 + "&t1=" +t1)
+               .then(function(response){
+                response.text()
+                .then(function(ans){
+                    document.getElementById("p2").innerHTML = ans;
+                })
+               })
             }
 
             
