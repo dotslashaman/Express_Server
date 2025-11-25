@@ -262,16 +262,18 @@ app.get('/sum',(req,res) =>{
 });
 
 app.get('/interest',(req,res) =>{
-    const principal = parseInt(req.query.pricipal);
-    const time = parseInt(req.query.time);
-    const rate = parseInt(req.query.rate);
-    const interest = (principal * rate * time)/100;
-    const amount = interest + principal;
+    const principle = parseInt(req.query.p1);
+    const time = parseInt(req.query.t1);
+    const rate = parseInt(req.query.r1);
+    const interest = (principle * rate * time)/100;
+    const amount = interest + principle;
 
+    
     res.send({
-            "amount" : amount,
-            "interest" : interest
+        "interest" : interest,
+        "amount" : amount
     });
+
 });
 
 app.listen(3000);

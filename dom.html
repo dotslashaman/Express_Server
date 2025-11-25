@@ -9,6 +9,9 @@
             #it2{
                 background-color:beige;
             }
+            .ip{
+                background-color:beige;
+            }
         </style>
     </head>
     <body>
@@ -17,6 +20,11 @@
 
         <button id="bt1">Find Sum</button>
         <p id="p1"></p>
+
+        <input id="principle" class="ip" placeholder="Enter the Principle">
+        <input id="rate" class="ip" placeholder="Enter the Rate">
+        <input id="time" class="ip" placeholder="Enter the duration">
+        <button id="calc"> Calculate Interest </button>
 
         <script>
             
@@ -34,6 +42,17 @@
                     })
                 });
                 
+            }
+
+
+            document.getElementById("calc").onclick = function(){
+
+                const principle = document.getElementById("principle").value;
+                const rate = document.getElementById("rate").value;
+                const time = document.getElementById("time").value;
+
+                fetch("http://localhost:3000/interest?principle="+ principle + "&rate=" + rate + "&time=" +time)
+                .then(console.log(response));
             }
 
             
