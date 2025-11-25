@@ -251,5 +251,25 @@ app.get("/users", function (req, res) {
 });
 
 
+app.get('/sum',(req,res) =>{
+    const a = parseInt(req.query.a);
+    const b = parseInt(req.query.b);
+
+    const sum = a+b;
+    res.send(sum.toString());
+});
+
+app.get('/interest',(req,res) =>{
+    const principal = parseInt(req.query.pricipal);
+    const time = parseInt(req.query.time);
+    const rate = parseInt(req.query.rate);
+    const interest = (principal * rate * time)/100;
+    const amount = interest + principal;
+
+    res.send({
+            "amount" : amount,
+            "interest" : interest
+    });
+});
 
 app.listen(3000);
