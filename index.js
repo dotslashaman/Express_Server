@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+app.use(cors());
 
-const jwt = require("jsonwebtoken");
-const jwtPassword = "123456";
+//const jwt = require("jsonwebtoken");
+//const jwtPassword = "123456";
 //const fs = require("fs");
 
 
