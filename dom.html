@@ -23,8 +23,17 @@
             document.getElementById("bt1").onclick = function(){
                 const a = document.getElementById("it1").value;
                 const b = document.getElementById("it2").value;
-                const c = fetch("http://localhost:3000/sum?a="+a + "&b=" + b);
-                document.getElementById("p1").innerHTML = c;
+                fetch("http://localhost:3000/sum?a="+a + "&b=" + b)
+                .then(function(response){
+                    console.log(response);
+
+                    response.text()
+                    .then(function(ans){
+                        console.log(ans);
+                        document.getElementById("p1").innerHTML = ans;
+                    })
+                });
+                
             }
 
             
